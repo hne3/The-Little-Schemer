@@ -86,3 +86,35 @@
 ; cons takes two arguments
 ; the first is any s-expression
 ; the second is any list
+(set! s '(a b (c)))
+(set! l '())
+(cons s l)
+
+(set! s 'a)
+(cons s l)
+
+; This shouldn't work. Why does this work?
+(set! s '((a b c)))
+(set! l 'b)
+(cons s l)
+; This also shouldn't work, but does.
+(set! s 'a)
+(cons s l)
+
+(set! l '((b) c d))
+(cons s (car l))
+(cons s (cdr l))
+
+(set! l '())
+(null? l)
+
+; quote() is a notation for the null list.
+(null? (quote()))
+
+(set! l '(a b c))
+(null? l)
+
+; You cannot ask null? of an atom
+; But again, this works where it shouldn't
+(set! a 'spaghetti)
+(null? a)
